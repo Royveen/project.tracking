@@ -5,11 +5,7 @@ import {resourcesRoutes} from '../resources/resources.routing'
 import {ResourcesComponent} from '../resources/resources.component'
 import {ScrumComponent} from './scrum.component'
 var routes: Routes = [
-  {path: 'dashboard', component: DashboardComponent, children:[
-  { path: 'resources', component: ResourcesComponent, children : resourcesRoutes },
-  { path: 'scrums', component: ScrumComponent }
-  ]
-  }
+  {path: 'dashboard', component: DashboardComponent}
 ];
 
 export const dashboardRouting: IRouting = {

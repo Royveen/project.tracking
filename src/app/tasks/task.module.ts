@@ -6,7 +6,7 @@ import {taskRouting} from './task.routing'
 import { CanDeactivateFormGuard } from '../resources/can-deactivate.guard';
 import { MyDatePickerModule } from 'mydatepicker';
 @NgModule({
-  imports:      [ CommonModule, taskRouting.routes, SharedModule,MyDatePickerModule ],
+  imports:      [ CommonModule, taskRouting.routes, SharedModule,MyDatePickerModule],
   declarations: [ taskRouting.components ],
   providers:[CanDeactivateFormGuard]
 })

@@ -7,7 +7,7 @@ import 'rxjs/add/observable/throw';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/map'; 
 import 'rxjs/add/operator/catch';
-
+import {IMyOptions} from 'mydatepicker';
 import { IResource, IState,ILogin,ISeperation } from '../../shared/interfaces';
 
 @Injectable()
@@ -18,6 +18,12 @@ export class DataService {
     resources: IResource[];
     loader:boolean=false;
     prevUrl:string='';
+     myDatePickerOptions: IMyOptions = {
+        dateFormat: 'mm/dd/yyyy',
+        editableDateField:false,
+        showSelectorArrow:false,
+        openSelectorTopOfInput:true,
+    };
     constructor(private http: Http) { }
     
  getChangedProperties(form:NgForm): string[] {
@@ -47,6 +53,19 @@ export class DataService {
     
    getResource(id: string,filter?:Object) : Observable<IResource> {
         return this.http.get(this.resourcesBaseUrl + '/' + id+ '/'+ JSON.stringify(filter))
+                    .map((res: Response) => {
+                       console.log(res);
+                    try{
+                        return res.json();
+                    }catch(error){
+                        return res["_body"];
+                    }   
+                   })
+                    .catch(this.handleError);
+    }
+
+       getTasks(id: string,filter?:Object) : Observable<IResource> {
+        return this.http.get('/api/tasks/' + id+ '/'+ JSON.stringify(filter))
                     .map((res: Response) => {
                        console.log(res);
                     try{

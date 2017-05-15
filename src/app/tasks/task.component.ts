@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router,NavigationEnd } from '@angular/router';
+import { Router,ActivatedRoute ,NavigationEnd,Params } from '@angular/router';
 import {DataService} from '../core/services/data.service'
 import 'rxjs/add/operator/filter';
 @Component({ 
@@ -9,8 +9,9 @@ import 'rxjs/add/operator/filter';
 })
 export class TaskComponent implements OnInit {
     previousUrl='';
-    constructor(private router: Router, private service:DataService) {
+    constructor(private route: ActivatedRoute, private service:DataService) {
         this.previousUrl=service.prevUrl;
+    //     this.dataService.get
      }
 
     ngOnInit() {

@@ -66,6 +66,19 @@ router.get('/api/resources/:id/:filter', (req, res) => {
     })
 })
 
+router.get('/api/tasks/:id/:filter', (req, res) => {
+    let customerId = req.params.id;
+    var db = req.db;
+    console.log(req.params);
+    var taskModel = getModel(db, 'getresource', schemas.tasks, 'taskCollection');
+    taskModel.find({ "release": db.Types.ObjectId(customerId) }, JSON.parse(req.params.filter == 'undefined' ? '{}' : req.params.filter), function(err, docs) {
+        console.log(docs);
+        if (err) {} else {
+            res.json(docs);
+        }
+    })
+})
+
 router.post('/api/resources/addroute', (req, res) => {
     var db = req.db;
     var resourceModel = getModel(db, 'addresource', schemas.resource, 'employeecollection');

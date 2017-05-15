@@ -7,6 +7,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ResourcesModule } from './resources/resources.module';
 import { LoginModule } from './login/login.module';
 import { AddReleaseModule } from './addRelease/add.release.module';
+import { TaskModule }   from './tasks/task.module';
 import { app_routing } from './app.routing';
 import { CoreModule }   from './core/core.module';
 import { SharedModule }   from './shared/shared.module';
@@ -21,7 +22,8 @@ import { SharedModule }   from './shared/shared.module';
     LoginModule,
     ResourcesModule,
     DashboardModule,
-    AddReleaseModule
+    AddReleaseModule,
+    TaskModule
   ],
   declarations: [ AppComponent,NavbarComponent,loaderComponent],
   bootstrap:    [ AppComponent,NavbarComponent,loaderComponent],

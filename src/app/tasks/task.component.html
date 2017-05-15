@@ -1,1 +1,42 @@
-tasks
+<div class="orders view">
+    <div class="container">
+        <header>
+            <ul class="list-inline resource-info-title">
+                <li class="list-inline-item">
+                    <h3><a routerLink="{{previousUrl}}"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a> </h3>
+                </li>
+                <li class="list-inline-item">
+                    <h3>Tasks Information</h3>
+                </li>
+            </ul>
+        </header>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger" *ngIf="message != null">{{ message }}</div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="1" routerLinkActive="active">1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="2" routerLinkActive="active">2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="3" routerLinkActive="active">3</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="4" routerLinkActive="active">4</a>
+                    </li>
+                </ul>
+
+                <div class="content-form mt-5">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+            <!--<div class="container">
+                <div class="mt-5">
+                    <a routerLink='/dashboard/resources'>View all Resources</a>
+                </div>
+            </div>-->
+        </div>
+    </div>
