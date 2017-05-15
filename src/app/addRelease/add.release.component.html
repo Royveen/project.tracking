@@ -1,0 +1,137 @@
+<div class="container">
+
+    <form class="form-horizontal clearfix mb-5" #addForm="ngForm" (ngSubmit)="onSubmit()" id="addForm">
+        <fieldset>
+            <legend>
+                <div class="flex just-space-bet">
+                    <span>Add Release</span>&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-success mb-5">Save</button>
+                </div>
+            </legend>
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Text input-->
+                    <div class=" form-group row">
+                        <label class="col-md-4 col-form-label" for="sid">Release ID</label>
+                        <div class="col-md-7">
+                            <input id="sid" name="sid" type="text" [(ngModel)]="releaseDetails.relName" placeholder="SAP ID" class="form-control input-md">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-md-4 col-form-label">Tasks</label>
+                        <div class="col-sm-6 col-md-7">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#taskDets">
+                    Add Tasks
+                    </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </fieldset>
+    </form>
+
+    <div class="task-table" *ngIf="tasks.length> 0">
+        <table class="table table-striped">
+            <thead>
+                <th>#</th>
+                <th>Phase</th>
+                <th>Name</th>
+                <th>Planned Start Date</th>
+                <th>Planned End Date</th>
+                <th>Actual Start Date</th>
+                <th>Actual End Date</th>
+                <th>BAC</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let t of tasks;let i=index;">
+                    <td>{{i+1}}</td>
+                    <td>{{t.phase}}</td>
+                    <td>{{t.task_des}}</td>
+                    <td>{{t.planned_start_date.formatted}}</td>
+                    <td>{{t.planned_end_date.formatted}}</td>
+                    <td>{{t.actual_start.formatted}}</td>
+                    <td>{{t.actual_end.formatted}}</td>
+                    <td>{{t.BAC}}</td>
+                    <td>
+                        <a (click)="removeTask(i)" class="btn btn-danger">Remove</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="taskDets" tabindex="-1" role="dialog" aria-labelledby="taskDetsLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Task Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal clearfix" #taskForm="ngForm" id="taskForm">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="phase">Phase</label>
+                                    <div class="col-md-7">
+                                        <input id="phase" name="phase" type="text" [(ngModel)]="task_add.phase" placeholder="Phase" class="form-control input-md">
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="tgroup">Task Name</label>
+                                    <div class="col-md-7">
+                                        <input id="tgroup" name="tgroup" type="text" [(ngModel)]="task_add.task_des" placeholder="Team Group" class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="tname">Planned Start Date</label>
+                                    <div class="col-md-7">
+                                        <my-date-picker name="planstartdate" [options]="myDatePickerOptions" [(ngModel)]="task_add.planned_start_date" required></my-date-picker>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="tname">Planned End Date</label>
+                                    <div class="col-md-7">
+                                        <my-date-picker name="planenddate" [options]="myDatePickerOptions" [(ngModel)]="task_add.planned_end_date" required></my-date-picker>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="tname">Actual Start Date</label>
+                                    <div class="col-md-7">
+                                        <my-date-picker name="actual_start" [options]="myDatePickerOptions" [(ngModel)]="task_add.actual_start" required></my-date-picker>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="tname">Actual End Date</label>
+                                    <div class="col-md-7">
+                                        <my-date-picker name="actual_end" [options]="myDatePickerOptions" [(ngModel)]="task_add.actual_end" required></my-date-picker>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="bac">BAC</label>
+                                    <div class="col-md-7">
+                                        <input id="bac" name="bac" type="number" [(ngModel)]="task_add.BAC" placeholder="BAC" class="form-control input-md">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" (click)="insertTask()" class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
