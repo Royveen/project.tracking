@@ -11,7 +11,7 @@ import { RouterModule, Routes , NavigationStart,NavigationEnd,NavigationError } 
 })
 export class AppComponent {
   constructor(public titleService:Title, public loadingService:DataService, public router:Router){
-    this.titleService.setTitle('Resource Management');
+    this.titleService.setTitle('Project Management');
    let mySubscription = this.router.events
   .filter(event => event instanceof NavigationEnd)
   .subscribe(e => {
