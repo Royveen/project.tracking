@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { DataService } from '../core/services/data.service';
+import { DialogService } from '../core/services/dialog.service';
 import {Response} from '@angular/http';
 import {IMyOptions} from 'mydatepicker';
 // import 'rxjs/add/operator/pairwise';
@@ -18,7 +19,7 @@ export class AddReleaseComponent {
         dateFormat: 'mm/dd/yyyy'
     };
 
-    constructor(private service:DataService){
+    constructor(private service:DataService,private dialog:DialogService){
 
     }
 
@@ -49,17 +50,7 @@ export class AddReleaseComponent {
 
         onSubmit(){
       
-         
-
-    swal({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes'
-    }).then(() => {
+      this.dialog.confirm('Are you sure?',() => {
       this.service.loader=true;
       this.service.addRelease(this.releaseDetails).subscribe(
       (res:any)=>{
@@ -72,10 +63,19 @@ export class AddReleaseComponent {
       (error:any)=>{
         swal('error',"The Request encountered an error, please try again after some time","error");
          this.service.loader=false;
-    })
-    })
+    });
+
+    // swal({
+    //   title: 'Are you sure?',
+    //   text: "You won't be able to revert this!",
+    //   type: 'warning',
+    //   showCancelButton: true,
+    //   confirmButtonColor: '#3085d6',
+    //   cancelButtonColor: '#d33',
+    //   confirmButtonText: 'Yes'
+    // }).then(
+    // })
 
 
 }
 
-}

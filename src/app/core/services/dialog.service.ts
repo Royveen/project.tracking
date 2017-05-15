@@ -3,15 +3,15 @@ declare var swal:any;
 @Injectable()
 export class DialogService {
 
-  success(message?:string){
+  success(message:string){
         swal('success',message || 'Request completed successfully','success');
   }
 
-  error(message?:string){
+  error(message:string){
     swal('error',message || 'Error Occurred','error');
   }
 
-  confirm(message?: string) {
+  confirm(message: string,callback:any) {
     return new Promise<boolean>(resolve => {
       return resolve(swal({
       title:'',
@@ -21,7 +21,7 @@ export class DialogService {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes'
-    })
+    }).then(callback)
     );
     })
 }
