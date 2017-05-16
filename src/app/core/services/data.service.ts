@@ -64,6 +64,19 @@ export class DataService {
                     .catch(this.handleError);
     }
 
+      getRelease() : Observable<IResource> {
+        return this.http.get('/api/releases')
+                    .map((res: Response) => {
+                       console.log(res);
+                    try{
+                        return res.json();
+                    }catch(error){
+                        return res["_body"];
+                    }   
+                   })
+                    .catch(this.handleError);
+    }
+
        getTasks(id: string,filter?:Object) : Observable<IResource> {
         return this.http.get('/api/tasks/' + id+ '/'+ JSON.stringify(filter))
                     .map((res: Response) => {

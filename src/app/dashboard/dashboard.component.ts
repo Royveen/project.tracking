@@ -10,11 +10,16 @@ import {Response} from '@angular/http';
 
 export class DashboardComponent implements OnInit {
 
-
+release_info:Array<any>=[];
 ngOnInit(){
   
 }
-constructor(){
+constructor(private service:DataService){
+
+ this.service.getRelease().subscribe((res:any)=>{
+   console.log(res);
+   this.release_info=res;
+ })
 }
  
 

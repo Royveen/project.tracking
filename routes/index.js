@@ -51,6 +51,19 @@ router.get('/api/resources', (req, res) => {
 });
 
 
+router.get('/api/releases', (req, res) => {
+    var db = req.db;
+    var releaseModel = getModel(db, 'releases', schemas.release, 'releaseCollection');
+    releaseModel.find({}).exec(function(err, docs) {
+        if (err) {} else {
+            res.json(docs);
+        }
+    })
+
+
+});
+
+
 router.get('/api/resources/:id/:filter', (req, res) => {
     let customerId = req.params.id;
     var db = req.db;
@@ -65,6 +78,9 @@ router.get('/api/resources/:id/:filter', (req, res) => {
         }
     })
 })
+
+
+
 
 router.get('/api/tasks/:id/:filter', (req, res) => {
     let customerId = req.params.id;

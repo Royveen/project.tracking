@@ -1,9 +1,9 @@
 <div class="row" id="dashboard">
-    <div class="col-lg-3 col-md-3 col-sm-6">
+    <div class="col-lg-3 col-md-3 col-sm-6" *ngFor="let rel of release_info;let i=index;">
         <div class="card card-primary">
             <div class="card-header ">
-                <a routerLink="/tasks/5915a1a57df2193320126d19/1">
-                    <h3 style="border-bottom: none;">Release 1</h3>
+                <a routerLink="/tasks/{{rel._id}}/1">
+                    <h3 style="border-bottom: none;color:#fff">{{rel.relName}}</h3>
                 </a>
             </div>
             <div class="card-block">
