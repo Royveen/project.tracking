@@ -16,7 +16,7 @@ ngOnInit(){
 }
 constructor(private service:DataService){
 
- this.service.getRelease().subscribe((res:any)=>{
+ this.service.getReleases().subscribe((res:any)=>{
    console.log(res);
    this.release_info=res;
  })

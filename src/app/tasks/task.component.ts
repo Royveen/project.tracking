@@ -9,9 +9,17 @@ import 'rxjs/add/operator/filter';
 })
 export class TaskComponent implements OnInit {
     previousUrl='';
+    title='';
     constructor(private route: ActivatedRoute, private service:DataService) {
         this.previousUrl=service.prevUrl;
-    //     this.dataService.get
+        this.route.params.subscribe((params:Params)=>{
+          console.log(params);
+          let id=params['id'];
+        this.service.getRelease(id).subscribe((res:any)=>{
+          console.log(res);
+          this.title=res.relName;
+        })
+        })
      }
 
     ngOnInit() {

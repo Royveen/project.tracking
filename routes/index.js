@@ -64,12 +64,12 @@ router.get('/api/releases', (req, res) => {
 });
 
 
-router.get('/api/resources/:id/:filter', (req, res) => {
+router.get('/api/release/:id/:filter', (req, res) => {
     let customerId = req.params.id;
     var db = req.db;
-    console.log(req.params);
-    var resourceModel = getModel(db, 'getresource', schemas.resource, 'employeecollection');
-    resourceModel.findById(customerId, JSON.parse(req.params.filter == 'undefined' ? '{}' : req.params.filter), function(err, docs) {
+    console.log(customerId);
+    var releaseModel = getModel(db, 'getrelease', schemas.release, 'releaseCollection');
+    releaseModel.findById(customerId, JSON.parse(req.params.filter == 'undefined' ? '{}' : req.params.filter), function(err, docs) {
         console.log(docs);
         if (err) {
 
@@ -153,6 +153,22 @@ router.put('/api/resources/:id', function(req, res) {
     var resourceModel = getModel(db, 'updateResource', schemas.resource, 'employeecollection');
     console.log(putData);
     resourceModel.update({ "_id": id }, { $set: putData }).exec((err, docs) => {
+        console.log(err);
+        console.log(docs);
+        res.status(200).send("Save Successfully");
+    })
+
+});
+
+router.put('/api/tasks/:id', function(req, res) {
+
+    var db = req.db;
+    var putData = req.body;
+    var id = req.params.id;
+    console.log(id);
+    var taskModel = getModel(db, 'updateTask', schemas.tasks, 'taskCollection');
+    console.log(putData);
+    taskModel.update({ "_id": id }, { $set: putData }).exec((err, docs) => {
         console.log(err);
         console.log(docs);
         res.status(200).send("Save Successfully");

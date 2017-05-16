@@ -64,7 +64,20 @@ export class DataService {
                     .catch(this.handleError);
     }
 
-      getRelease() : Observable<IResource> {
+      getRelease(id: string,filter?:Object) : Observable<IResource> {
+        return this.http.get('/api/release/' + id+ '/'+ JSON.stringify(filter))
+                    .map((res: Response) => {
+                       console.log(res);
+                    try{
+                        return res.json();
+                    }catch(error){
+                        return res["_body"];
+                    }   
+                   })
+                    .catch(this.handleError);
+    }
+
+      getReleases() : Observable<IResource> {
         return this.http.get('/api/releases')
                     .map((res: Response) => {
                        console.log(res);
@@ -137,6 +150,19 @@ export class DataService {
                    .catch(this.handleError);
     }
     
+    updateTask(changes:Object) : Observable<string> {
+        return this.http.put('api/tasks/' + changes["_id"], changes)
+                   .map((res: Response) => {
+                       console.log(res);
+                    try{
+                        return res.json();
+                    }catch(error){
+                        return res["_body"];
+                    }   
+                   })
+                   .catch(this.handleError);  
+    }
+
     updateResource(id:string,changes:Object) : Observable<string> {
         return this.http.put(this.resourcesBaseUrl + '/' + id, changes)
                    .map((res: Response) => {
