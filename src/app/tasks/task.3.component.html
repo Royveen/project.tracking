@@ -23,24 +23,23 @@
                 BAC
             </th>
             <th>
-                ATD
+                SPE
             </th>
             <th>
-                PV
+                PME
             </th>
             <th>
-                EV
+                Conf Mgmt
             </th>
-            <th>
-                AC
+             <th>
+                QA
             </th>
-            <th>
-                ETC
+             <th>
+                Defect Prevention
             </th>
-            <th>
-                EAC
+             <th>
+                Training
             </th>
-
         </thead>
         <tbody>
             <tr *ngFor=" let tasks of task_info;let i=index ">
@@ -53,12 +52,12 @@
                 <td data-title="Task"> {{tasks["actual_start"].formatted}}</td>
                 <td data-title="Task"> {{tasks["actual_end"].formatted}}</td>
                 <td data-title="Task"> {{tasks["BAC"]}}</td>
-                <td data-title="Task"> {{tasks["ATD"]}}</td>
-                <td data-title="Task"> {{tasks["PV"]}}</td>
-                <td data-title="Task"> {{tasks["EV"]}}</td>
-                <td data-title="Task"> {{tasks["AC"]}}</td>
-                <td data-title="Task"> {{tasks["ETC"]}}</td>
-                <td data-title="Task"> {{tasks["EAC"]}}</td>
+                <td data-title="Task"> {{tasks["SPE"]}}</td>
+                <td data-title="Task"> {{tasks["PME"]}}</td>
+                <td data-title="Task"> {{tasks["conf_management"]}}</td>
+                 <td data-title="Task"> {{tasks["QA"]}}</td>
+                <td data-title="Task"> {{tasks["defect_prevention"]}}</td>
+                <td data-title="Task"> {{tasks["training"]}}</td>
                 <td data-title="Task">
                     <a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 </td>
@@ -105,25 +104,27 @@
                                         <my-date-picker name="planenddate" [options]="service.myDatePickerOptions" [(ngModel)]="task_edit.planned_end_date" required></my-date-picker>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="ac">AC</label>
+                                 <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="spe">SPE</label>
                                     <div class="col-md-7">
-                                        <input id="ac" name="ac" type="number" [(ngModel)]="task_edit.AC" placeholder="AC" class="form-control input-md">
+                                        <input id="spe" name="spe" type="number" [(ngModel)]="task_edit.SPE" placeholder="SPE" class="form-control input-md">
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="conf-mgmt">Configuration Management</label>
+                                    <div class="col-md-7">
+                                        <input id="conf-mgmt" name="conf-mgmt" type="number" [(ngModel)]="task_edit.conf_management" placeholder="Configuration Management" class="form-control input-md">
+
                                     </div>
                                 </div>
                                  <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="ev">EV</label>
+                                    <label class="col-md-4 col-form-label" for="training">Training</label>
                                     <div class="col-md-7">
-                                        <input id="ev" name="ev" type="number" [(ngModel)]="task_edit.EV" placeholder="EV" class="form-control input-md">
+                                        <input id="training" name="training" type="number" [(ngModel)]="task_edit.training" placeholder="Training" class="form-control input-md">
 
                                     </div>
-                                </div>     
-                                 <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="eac">EAC</label>
-                                    <div class="col-md-7">
-                                        <input id="eac" name="eac" type="number" [(ngModel)]="task_edit.EAC" placeholder="EAC" class="form-control input-md">
-                                    </div>
-                                </div>                            
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
@@ -144,24 +145,26 @@
                                         <input id="bac" name="bac" type="number" [(ngModel)]="task_edit.BAC" placeholder="BAC" class="form-control input-md">
 
                                     </div>
-                                </div>    
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="atd">ATD</label>
+                                </div>
+                                 <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="pme">PME</label>
                                     <div class="col-md-7">
-                                        <input id="atd" name="atd" type="number" [(ngModel)]="task_edit.ATD" placeholder="ATD" class="form-control input-md">
+                                        <input id="pme" name="pme" type="number" [(ngModel)]="task_edit.PME" placeholder="PME" class="form-control input-md">
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="qa">QA</label>
+                                    <div class="col-md-7">
+                                        <input id="qa" name="qa" type="number" [(ngModel)]="task_edit.QA" placeholder="QA" class="form-control input-md">
 
                                     </div>
                                 </div>
                                  <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="pv">PV</label>
+                                    <label class="col-md-4 col-form-label" for="defect-prevention">Defect Prevention</label>
                                     <div class="col-md-7">
-                                        <input id="pv" name="pv" type="number" [(ngModel)]="task_edit.PV" placeholder="PV" class="form-control input-md">
-                                    </div>
-                                </div> 
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="etc">ETC</label>
-                                    <div class="col-md-7">
-                                        <input id="etc" name="etc" type="number" [(ngModel)]="task_edit.ETC" placeholder="ETC" class="form-control input-md">
+                                        <input id="defect-prevention" name="defect-prevention" type="number" [(ngModel)]="task_edit.defect_prevention" placeholder="Defect Prevention" class="form-control input-md">
+
                                     </div>
                                 </div>
                             </div>

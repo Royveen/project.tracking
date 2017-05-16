@@ -165,6 +165,9 @@ footer {
         justify-content: flex-end;
         width: 100%;
     }
+    .task-wrapper .table-responsive {
+        display: table;
+    }
 }
 
 .editForm {

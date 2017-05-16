@@ -23,24 +23,14 @@
                 BAC
             </th>
             <th>
-                ATD
+                Tasks
             </th>
             <th>
-                PV
+                Review
             </th>
             <th>
-                EV
+                Rework
             </th>
-            <th>
-                AC
-            </th>
-            <th>
-                ETC
-            </th>
-            <th>
-                EAC
-            </th>
-
         </thead>
         <tbody>
             <tr *ngFor=" let tasks of task_info;let i=index ">
@@ -53,12 +43,9 @@
                 <td data-title="Task"> {{tasks["actual_start"].formatted}}</td>
                 <td data-title="Task"> {{tasks["actual_end"].formatted}}</td>
                 <td data-title="Task"> {{tasks["BAC"]}}</td>
-                <td data-title="Task"> {{tasks["ATD"]}}</td>
-                <td data-title="Task"> {{tasks["PV"]}}</td>
-                <td data-title="Task"> {{tasks["EV"]}}</td>
-                <td data-title="Task"> {{tasks["AC"]}}</td>
-                <td data-title="Task"> {{tasks["ETC"]}}</td>
-                <td data-title="Task"> {{tasks["EAC"]}}</td>
+                <td data-title="Task"> {{tasks["task_planned"]}}</td>
+                <td data-title="Task"> {{tasks["review_planned"]}}</td>
+                <td data-title="Task"> {{tasks["rework_planned"]}}</td>
                 <td data-title="Task">
                     <a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 </td>
@@ -105,25 +92,13 @@
                                         <my-date-picker name="planenddate" [options]="service.myDatePickerOptions" [(ngModel)]="task_edit.planned_end_date" required></my-date-picker>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="ac">AC</label>
-                                    <div class="col-md-7">
-                                        <input id="ac" name="ac" type="number" [(ngModel)]="task_edit.AC" placeholder="AC" class="form-control input-md">
-                                    </div>
-                                </div>
                                  <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="ev">EV</label>
+                                    <label class="col-md-4 col-form-label" for="work">Tasks</label>
                                     <div class="col-md-7">
-                                        <input id="ev" name="ev" type="number" [(ngModel)]="task_edit.EV" placeholder="EV" class="form-control input-md">
+                                        <input id="task" name="task" type="number" [(ngModel)]="task_edit.task_planned" placeholder="Tasks" class="form-control input-md">
 
                                     </div>
-                                </div>     
-                                 <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="eac">EAC</label>
-                                    <div class="col-md-7">
-                                        <input id="eac" name="eac" type="number" [(ngModel)]="task_edit.EAC" placeholder="EAC" class="form-control input-md">
-                                    </div>
-                                </div>                            
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
@@ -144,24 +119,19 @@
                                         <input id="bac" name="bac" type="number" [(ngModel)]="task_edit.BAC" placeholder="BAC" class="form-control input-md">
 
                                     </div>
-                                </div>    
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="atd">ATD</label>
+                                </div>
+                                 <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="rework">Review</label>
                                     <div class="col-md-7">
-                                        <input id="atd" name="atd" type="number" [(ngModel)]="task_edit.ATD" placeholder="ATD" class="form-control input-md">
+                                        <input id="rework" name="rework" type="number" [(ngModel)]="task_edit.review_planned" placeholder="Review" class="form-control input-md">
 
                                     </div>
                                 </div>
                                  <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="pv">PV</label>
+                                    <label class="col-md-4 col-form-label" for="rework">Rework</label>
                                     <div class="col-md-7">
-                                        <input id="pv" name="pv" type="number" [(ngModel)]="task_edit.PV" placeholder="PV" class="form-control input-md">
-                                    </div>
-                                </div> 
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="etc">ETC</label>
-                                    <div class="col-md-7">
-                                        <input id="etc" name="etc" type="number" [(ngModel)]="task_edit.ETC" placeholder="ETC" class="form-control input-md">
+                                        <input id="rework" name="rework" type="number" [(ngModel)]="task_edit.rework_planned" placeholder="Rework" class="form-control input-md">
+
                                     </div>
                                 </div>
                             </div>
