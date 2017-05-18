@@ -21,6 +21,4 @@ constructor(private service:DataService){
    this.release_info=res;
  })
 }
- 
-
 }

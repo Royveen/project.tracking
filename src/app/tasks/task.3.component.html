@@ -31,13 +31,13 @@
             <th>
                 Conf Mgmt
             </th>
-             <th>
+            <th>
                 QA
             </th>
-             <th>
+            <th>
                 Defect Prevention
             </th>
-             <th>
+            <th>
                 Training
             </th>
         </thead>
@@ -55,7 +55,7 @@
                 <td data-title="Task"> {{tasks["SPE"]}}</td>
                 <td data-title="Task"> {{tasks["PME"]}}</td>
                 <td data-title="Task"> {{tasks["conf_management"]}}</td>
-                 <td data-title="Task"> {{tasks["QA"]}}</td>
+                <td data-title="Task"> {{tasks["QA"]}}</td>
                 <td data-title="Task"> {{tasks["defect_prevention"]}}</td>
                 <td data-title="Task"> {{tasks["training"]}}</td>
                 <td data-title="Task">
@@ -76,7 +76,7 @@
         </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal clearfix" #taskForm="ngForm" id="taskForm">
+                    <form class="form-horizontal clearfix" #taskForm="ngForm" id="taskForm" (ngSubmit)="onSubmit()">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group row">
@@ -104,7 +104,7 @@
                                         <my-date-picker name="planenddate" [options]="service.myDatePickerOptions" [(ngModel)]="task_edit.planned_end_date" required></my-date-picker>
                                     </div>
                                 </div>
-                                 <div class="form-group row">
+                                <div class="form-group row">
                                     <label class="col-md-4 col-form-label" for="spe">SPE</label>
                                     <div class="col-md-7">
                                         <input id="spe" name="spe" type="number" [(ngModel)]="task_edit.SPE" placeholder="SPE" class="form-control input-md">
@@ -118,7 +118,7 @@
 
                                     </div>
                                 </div>
-                                 <div class="form-group row">
+                                <div class="form-group row">
                                     <label class="col-md-4 col-form-label" for="training">Training</label>
                                     <div class="col-md-7">
                                         <input id="training" name="training" type="number" [(ngModel)]="task_edit.training" placeholder="Training" class="form-control input-md">
@@ -146,7 +146,7 @@
 
                                     </div>
                                 </div>
-                                 <div class="form-group row">
+                                <div class="form-group row">
                                     <label class="col-md-4 col-form-label" for="pme">PME</label>
                                     <div class="col-md-7">
                                         <input id="pme" name="pme" type="number" [(ngModel)]="task_edit.PME" placeholder="PME" class="form-control input-md">
@@ -160,7 +160,7 @@
 
                                     </div>
                                 </div>
-                                 <div class="form-group row">
+                                <div class="form-group row">
                                     <label class="col-md-4 col-form-label" for="defect-prevention">Defect Prevention</label>
                                     <div class="col-md-7">
                                         <input id="defect-prevention" name="defect-prevention" type="number" [(ngModel)]="task_edit.defect_prevention" placeholder="Defect Prevention" class="form-control input-md">
@@ -169,11 +169,12 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
                     </form>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" (click)="insertTask()" class="btn btn-primary">Add</button>
-                    </div>
                 </div>
             </div>
         </div>
