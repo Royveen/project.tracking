@@ -91,7 +91,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label" for="def-rec">Defects Received</label>
                                     <div class="col-md-7">
-                                        <input id="def-rec" name="def-rec" type="number" [(ngModel)]="task_edit.defects_received" placeholder="Defects Received" class="form-control input-md">
+                                        <input id="def-rec" name="def-rec" type="number" step="0.01" [(ngModel)]="task_edit.defects_received" placeholder="Defects Received" class="form-control input-md">
 
                                     </div>
                                 </div>
@@ -112,14 +112,14 @@
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label" for="bac">BAC</label>
                                     <div class="col-md-7">
-                                        <input id="bac" name="bac" type="number" [(ngModel)]="task_edit.BAC" placeholder="BAC" class="form-control input-md">
+                                        <input id="bac" name="bac" type="number" step="0.01" [(ngModel)]="task_edit.BAC" placeholder="BAC" class="form-control input-md">
 
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label" for="def-del">Defects Delivered</label>
                                     <div class="col-md-7">
-                                        <input id="def-del" name="def-del" type="number" [(ngModel)]="task_edit.defects_delivered" placeholder="Defects Delivered" class="form-control input-md">
+                                        <input id="def-del" name="def-del" type="number" step="0.01" [(ngModel)]="task_edit.defects_delivered" placeholder="Defects Delivered" class="form-control input-md">
 
                                     </div>
                                 </div>

@@ -2,6 +2,7 @@ import {Component,OnInit,OnDestroy} from '@angular/core'
 import { Router, ActivatedRoute, Params , CanDeactivate} from '@angular/router';
 import {DataService} from '../core/services/data.service'
 import {DialogService} from '../core/services/dialog.service'
+import {ITasks} from '../shared/interfaces'
 declare var swal:any;
 @Component({
     moduleId:module.id,
@@ -11,9 +12,35 @@ declare var swal:any;
 
 export class Task4Component implements OnInit,OnDestroy{
 
-   task_info:any=[];
+   task_info:Array<ITasks>=[];
    subs:any;
-   task_edit:any={};
+   task_edit:ITasks = {  
+       phase: '',
+        task_des: '',
+        planned_start_date: {},
+        planned_end_date: {},
+        actual_start: {},
+        actual_end: {},
+        BAC: null,
+        release: '',
+        ATD: null,
+        PV: null,
+        EV: null,
+        EAC: null,
+        ETC: null,
+        AC: null,
+        task_planned: null,
+        review_planned: null,
+        rework_planned: null,
+        SPE: null,
+        PME: null,
+        conf_management: null,
+        QA: null,
+        defect_prevention: null,
+        training: null,
+        defects_received: null,
+        defects_delivered: null
+    };
 constructor(private route:ActivatedRoute,private service:DataService,private dialog:DialogService){
 
    this.subs=this.route.parent.params.subscribe((params: Params) => {

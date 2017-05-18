@@ -65,7 +65,24 @@ var tasks = {
         actual_start: Object,
         actual_end: Object,
         BAC: Number,
-        release: Schema.Types.ObjectId
+        release: Schema.Types.ObjectId,
+        ATD: Number,
+        PV: Number,
+        EV: Number,
+        EAC: Number,
+        ETC: Number,
+        AC: Number,
+        task_planned: Number,
+        review_planned: Number,
+        rework_planned: Number,
+        SPE: Number,
+        PME: Number,
+        conf_management: Number,
+        QA: Number,
+        defect_prevention: Number,
+        training: Number,
+        defects_received: Number,
+        defects_delivered: Number
     }
     // export schemas
 var db_schemas = {

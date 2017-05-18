@@ -31,6 +31,34 @@ export interface IResource {
     user_access:string;
 }
 
+export interface ITasks {
+        phase: string,
+        task_des: string,
+        planned_start_date: Object,
+        planned_end_date: Object,
+        actual_start: Object,
+        actual_end: Object,
+        BAC: number,
+        release: string,
+        ATD: number,
+        PV: number,
+        EV: number,
+        EAC: number,
+        ETC: number,
+        AC: number,
+        task_planned: number,
+        review_planned: number,
+        rework_planned: number,
+        SPE: number,
+        PME: number,
+        conf_management: number,
+        QA: number,
+        defect_prevention: number,
+        training: number,
+        defects_received: number,
+        defects_delivered: number
+    }
+
 export interface IResourcePersonal {
     
 }

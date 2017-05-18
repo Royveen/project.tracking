@@ -1,5 +1,5 @@
 <div class="row" id="dashboard">
-    <div class="col-lg-3 col-md-3 col-sm-6" *ngFor="let rel of release_info;let i=index;">
+    <div class="col-lg-4 col-md-6 col-sm-7" *ngFor="let rel of release_info;let i=index;">
         <div class="card card-primary">
             <div class="card-header ">
                 <a routerLink="/tasks/{{rel._id}}/1">
@@ -7,6 +7,81 @@
                 </a>
             </div>
             <div class="card-block">
+               <table class="table table-condensed table-bordered table-responsive">
+                 <thead>
+                    <th>
+                        Metrics
+                    </th>
+                    <th>
+                        Calculated
+                    </th>
+                    <th>
+                        Threshold
+                    </th>
+                </thead>
+                <tbody>
+                      <tr>
+                        <td>CPI</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                     <tr>
+                        <td>SPI</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                     <tr>
+                        <td>COQ</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                     <tr>
+                        <td>COR</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Peer review effectivenes (Build)</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Testing Effectivenes (phasewise)</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Overall Defect Rate</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Delivered Defect Rate</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Defect removal efficiency</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Defect Rate (Stage wise)</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Overall Defect Density</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                     <tr>
+                        <td>Delivered Defect Density</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+               </table>
             </div>
         </div>
     </div>
