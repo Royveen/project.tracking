@@ -158,7 +158,7 @@ footer {
 
 @media(min-width:600px) {
     #navbarDefault {
-        margin-left: 11rem;
+        justify-content: flex-end;
     }
     .submit-button-box {
         display: flex;
