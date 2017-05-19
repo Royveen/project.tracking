@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import { loaderComponent } from './loader.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import {KnowledgeComponent} from './knowledge.component'
 import { DashboardModule } from './dashboard/dashboard.module';
 import { LoginModule } from './login/login.module';
 import { AddReleaseModule } from './addRelease/add.release.module';
@@ -23,7 +24,7 @@ import { SharedModule }   from './shared/shared.module';
     AddReleaseModule,
     TaskModule
   ],
-  declarations: [ AppComponent,NavbarComponent,loaderComponent],
+  declarations: [ AppComponent,NavbarComponent,loaderComponent,KnowledgeComponent],
   bootstrap:    [ AppComponent,NavbarComponent,loaderComponent],
 })
 export class AppModule { 

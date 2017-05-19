@@ -243,3 +243,6 @@ footer {
 .highcharts-credits {
     display: none;
 }
+.caption-heading th{
+    border: none;
+}
