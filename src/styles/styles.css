@@ -179,6 +179,10 @@ footer {
     color: white;
 }
 
+#dashboard table {
+    display: table;
+}
+
 #dashboard .card-green .card-header {
     background: #5cb85c;
     border-color: #5cb85c;
