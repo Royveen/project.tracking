@@ -243,6 +243,15 @@ footer {
 .highcharts-credits {
     display: none;
 }
-.caption-heading th{
+
+.caption-heading th {
     border: none;
+}
+
+.task-table {
+    font-size: 12px;
+}
+
+.taskTableInput {
+    width: 25px;
 }

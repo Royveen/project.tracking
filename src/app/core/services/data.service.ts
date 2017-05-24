@@ -23,6 +23,8 @@ export class DataService {
         editableDateField:false,
         showSelectorArrow:false,
         openSelectorTopOfInput:true,
+        showClearDateBtn:false,
+        showTodayBtn:false
     };
     constructor(private http: Http) { }
     
