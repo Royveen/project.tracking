@@ -249,8 +249,8 @@ footer {
     border: none;
 }
 
-.task-table {
-    font-size: 12px;
+.task-table td:last-child {
+    width:70px;
 }
 
 .taskTableInput {
