@@ -258,3 +258,15 @@ footer {
     max-width: 100%;
     width: 100%;
 }
+
+.knowledge-section a {
+    text-decoration: none;
+}
+
+#dashboard .card {
+    margin-bottom: 20px;
+}
+
+.table td {
+    vertical-align: middle;
+}
