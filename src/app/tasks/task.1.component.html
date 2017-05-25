@@ -41,7 +41,7 @@
                 EAC
             </th>
             <th>
-                t
+                Task
             </th>
             <th>
                 Review
@@ -52,9 +52,7 @@
         </thead>
         <tbody>
             <tr *ngFor=" let t of task_info;let i=index ">
-                <td data-title="Task"> <a href="javascript:void(0)" (click)="editTask(i)" data-toggle="modal" data-target="#taskEditDets">
-                   {{t["task_des"]}}
-                    </a></td>
+                <td data-title="Task">{{t["task_des"]}}</td>
                 <td data-title="Task"> {{t["phase"]}}</td>
                 <td data-title="Task"> {{t["planned_start_date"].formatted}}</td>
                 <td data-title="Task"> {{t["planned_end_date"].formatted}}</td>

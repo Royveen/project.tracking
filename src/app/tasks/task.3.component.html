@@ -42,31 +42,44 @@
             </th>
         </thead>
         <tbody>
-            <tr *ngFor=" let tasks of task_info;let i=index ">
-                <td data-title="Task"> <a href="javascript:void(0)" (click)="editTask(i)" data-toggle="modal" data-target="#taskEditDets">
-                   {{tasks["task_des"]}}
-                    </a></td>
-                <td data-title="Task"> {{tasks["phase"]}}</td>
-                <td data-title="Task"> {{tasks["planned_start_date"].formatted}}</td>
-                <td data-title="Task"> {{tasks["planned_end_date"].formatted}}</td>
-                <td data-title="Task"> {{tasks["actual_start"].formatted}}</td>
-                <td data-title="Task"> {{tasks["actual_end"].formatted}}</td>
-                <td data-title="Task"> {{tasks["BAC"]}}</td>
-                <td data-title="Task"> {{tasks["SPE"]}}</td>
-                <td data-title="Task"> {{tasks["PME"]}}</td>
-                <td data-title="Task"> {{tasks["conf_management"]}}</td>
-                <td data-title="Task"> {{tasks["QA"]}}</td>
-                <td data-title="Task"> {{tasks["defect_prevention"]}}</td>
-                <td data-title="Task"> {{tasks["training"]}}</td>
+            <tr *ngFor=" let t of task_info;let i=index ">
+                <td data-title="Task">{{t["task_des"]}}</td>
+                <td data-title="Task"> {{t["phase"]}}</td>
+                <td data-title="Task"> {{t["planned_start_date"].formatted}}</td>
+                <td data-title="Task"> {{t["planned_end_date"].formatted}}</td>
+                <td data-title="Task"> {{t["actual_start"].formatted}}</td>
+                <td data-title="Task"> {{t["actual_end"].formatted}}</td>
+                <td data-title="Task"> {{t["BAC"]}}</td>
+                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["SPE"]}}</span> <input class="taskTableInput" type="text" [(ngModel)]="task_edit[i].SPE" *ngIf="task_edit[i].showinput" /></td>
+                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["PME"]}}</span> <input class="taskTableInput" type="text" [(ngModel)]="task_edit[i].PME" *ngIf="task_edit[i].showinput" /></td>
+                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["conf_management"]}}</span> <input class="taskTableInput" type="text" [(ngModel)]="task_edit[i].conf_management" *ngIf="task_edit[i].showinput" /></td>
+                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["QA"]}}</span> <input class="taskTableInput" type="text" [(ngModel)]="task_edit[i].QA" *ngIf="task_edit[i].showinput" /></td>
+                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["defect_prevention"]}}</span> <input class="taskTableInput" type="text" [(ngModel)]="task_edit[i].defect_prevention" *ngIf="task_edit[i].showinput" /></td>
+                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["training"]}}</span> <input class="taskTableInput" type="text" [(ngModel)]="task_edit[i].training" *ngIf="task_edit[i].showinput" /></td>
                 <td data-title="Task">
-                    <a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <ul class="list-inline" *ngIf="!task_edit[i].showinput">
+                        <li class=" list-inline-item ">
+                            <i class="fa fa-pencil " aria-hidden="true " (click)="editTask(i) "></i>
+                        </li>
+                        <li class="list-inline-item ">
+                            <i class="fa fa-trash " aria-hidden="true " (click)="toggleTask(i) "></i>
+                        </li>
+                    </ul>
+                    <ul class="list-inline " *ngIf="task_edit[i].showinput">
+                        <li class="list-inline-item ">
+                            <i class="fa fa-check " aria-hidden="true " (click)="onSubmit(i) "></i>
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-times" aria-hidden="true " (click)="closeEditTask(i) "></i>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         </tbody>
     </table>
 
 
-    <div class="modal fade" id="taskEditDets" tabindex="-1" role="dialog" aria-labelledby="taskEditDets">
+    <!--<div class="modal fade" id="taskEditDets" tabindex="-1" role="dialog" aria-labelledby="taskEditDets">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -178,5 +191,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>

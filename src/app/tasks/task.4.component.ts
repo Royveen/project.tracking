@@ -14,40 +14,21 @@ export class Task4Component implements OnInit,OnDestroy{
 
    task_info:Array<ITasks>=[];
    subs:any;
-   task_edit:ITasks = {  
-       phase: '',
-        task_des: '',
-        planned_start_date: {},
-        planned_end_date: {},
-        actual_start: {},
-        actual_end: {},
-        BAC: null,
-        release: '',
-        ATD: null,
-        PV: null,
-        EV: null,
-        EAC: null,
-        ETC: null,
-        AC: null,
-        task_planned: null,
-        review_planned: null,
-        rework_planned: null,
-        SPE: null,
-        PME: null,
-        conf_management: null,
-        QA: null,
-        defect_prevention: null,
-        training: null,
-        defects_received: null,
-        defects_delivered: null
-    };
+   task_edit:Array<any>; 
+   
 constructor(private route:ActivatedRoute,private service:DataService,private dialog:DialogService){
-
    this.subs=this.route.parent.params.subscribe((params: Params) => {
         let id = params['id'];
         console.log(id);
+        var one={};
         this.service.getTasks(id)
-            .subscribe((tasks:any) =>{this.task_info = tasks;console.log(this.task_info)},
+            .subscribe((tasks:any) =>{this.task_info = tasks;
+               this.task_edit =JSON.parse(JSON.stringify(this.task_info));
+                
+                this.task_edit.map(function(n:any){
+                    n.showinput=false;
+                });
+            },
       (error:any)=>{
         swal('error',"The Request encountered an error, please try again after some time","error");
          this.service.loader=false;
@@ -63,7 +44,6 @@ onSubmit(){
         this.service.loader=true;
     this.service.updateTask(this.task_edit).subscribe((res:any)=>{
         this.dialog.success(res);
-        this.task_info.splice(this.selectedRow,1,this.task_edit);
         this.service.loader=false;
     },(error:any)=>{
 
@@ -72,15 +52,10 @@ onSubmit(){
 }
 
 editTask(n:number){
-    this.selectedRow=n;
-    this.task_edit=Object.assign({},this.task_info[n]);
+    this.task_edit[n].showinput=true;
 }
-ngOnInit(){
+closeEditTask(n:number){
+    this.task_edit[n].showinput=false;
+}
 
-}
-
-ngOnDestroy(){
-    console.log('Destroying');
-    this.subs.unsubscribe();
-}
 }
