@@ -179,7 +179,8 @@ footer {
     color: white;
 }
 
-#dashboard table {
+#dashboard table,
+.formulea-table table {
     display: table;
 }
 
