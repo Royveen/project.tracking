@@ -11,7 +11,7 @@ declare var swal:any;
     templateUrl:'task.3.component.html'
 })
 
-export class Task3Component implements OnInit,OnDestroy{
+export class Task3Component {
 
    task_info:Array<ITasks>=[];
    subs:any;
