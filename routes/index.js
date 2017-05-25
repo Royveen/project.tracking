@@ -79,6 +79,33 @@ router.get('/api/release/:id/:filter', (req, res) => {
     })
 })
 
+router.get('/api/sum/:id', (req, res) => {
+    var releaseId = req.params.id;
+    console.log(releaseId);
+    var db = req.db;
+    var sumModel = getModel(db, 'getSums', schemas.tasks, 'taskCollection');
+    sumModel.aggregate(
+        [{
+                "$match": {
+                    release: db.Types.ObjectId(releaseId)
+                }
+            },
+            // Grouping pipeline
+            {
+                "$group": {
+                    "_id": '',
+                    "totals_atd": { "$sum": '$ATD' },
+                    "totals_BAC": { "$sum": '$BAC' }
+                }
+            }
+        ],
+        function(err, result) {
+            res.json(result);
+            // Result is an array of documents
+        }
+    );
+})
+
 
 
 
