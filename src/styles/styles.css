@@ -250,7 +250,7 @@ footer {
 }
 
 .task-table td:last-child {
-    width:70px;
+    width: 70px;
 }
 
 .taskTableInput {
@@ -269,4 +269,12 @@ footer {
 
 .table td {
     vertical-align: middle;
+}
+
+.datepicker.dropdown-menu {
+    padding: 0.5rem;
+}
+
+.datepicker td {
+    padding: 5px;
 }

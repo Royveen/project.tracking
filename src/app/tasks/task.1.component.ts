@@ -24,7 +24,7 @@ constructor(private route:ActivatedRoute,private service:DataService,private dia
         var one={};
         this.service.getTasks(id)
             .subscribe((tasks:any) =>{this.task_info = tasks;
-               this.task_edit =JSON.parse(JSON.stringify(this.task_info));
+               this.task_edit =service.getCopy(this.task_info);
                 
                 this.task_edit.map(function(n:any){
                     n.showinput=false;
@@ -40,11 +40,11 @@ constructor(private route:ActivatedRoute,private service:DataService,private dia
 selectedRow:number=0;
 
 onSubmit(n:number){
-
-    
     this.dialog.confirm('Are you sure?',() =>{
         this.service.loader=true;
-    this.service.updateTask(this.task_edit).subscribe((res:any)=>{
+    this.service.updateTask(this.task_edit[n]).subscribe((res:any)=>{
+         this.task_info[n]=this.service.getCopy(this.task_edit[n])
+         this.task_edit[n].showinput=false;
         this.dialog.success(res);
         this.service.loader=false;
     },(error:any)=>{
@@ -55,13 +55,16 @@ onSubmit(n:number){
 
 
 editTask(n:number){
+    this.task_edit[n]=this.service.getCopy(this.task_info[n])
     this.task_edit[n].showinput=true;
 }
 closeEditTask(n:number){
     this.task_edit[n].showinput=false;
 }
 
-
+doEmitDate(dateText:any){
+    console.log(dateText);
+}
 
 ngOnInit(){
 

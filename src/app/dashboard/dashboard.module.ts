@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SharedModule }   from '../shared/shared.module';
 import { DataService } from '../core/services/data.service';
 import { dashboardRouting } from './dashboard.routing';
-import { MyDatePickerModule } from 'mydatepicker';
 @NgModule({
-  imports:      [ CommonModule, dashboardRouting.routes, SharedModule,MyDatePickerModule ],
+  imports:      [ CommonModule, dashboardRouting.routes, SharedModule ],
   declarations: [ dashboardRouting.components ]
 })
 export class DashboardModule { 

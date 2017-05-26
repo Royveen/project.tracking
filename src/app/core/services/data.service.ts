@@ -20,6 +20,7 @@ export class DataService {
     prevUrl:string='';
      myDatePickerOptions: IMyOptions = {
         dateFormat: 'mm/dd/yyyy',
+        inline:false,
         editableDateField:false,
         showSelectorArrow:false,
         openSelectorTopOfInput:true,
@@ -27,7 +28,10 @@ export class DataService {
         showTodayBtn:false
     };
     constructor(private http: Http) { }
-    
+
+getCopy(objectToCopy:any) {
+    return JSON.parse(JSON.stringify(objectToCopy));
+}
  getChangedProperties(form:NgForm): string[] {
   let changedProperties:any = {};
   Object.keys(form.controls).forEach((name) => {

@@ -37,12 +37,14 @@ constructor(private route:ActivatedRoute,private service:DataService,private dia
 
       });
 }
+onSubmit(n:number){
 
-
-onSubmit(){
+    
     this.dialog.confirm('Are you sure?',() =>{
         this.service.loader=true;
-    this.service.updateTask(this.task_edit).subscribe((res:any)=>{
+    this.service.updateTask(this.task_edit[n]).subscribe((res:any)=>{
+         this.task_info[n]=this.service.getCopy(this.task_edit[n])
+         this.task_edit[n].showinput=false;
         this.dialog.success(res);
         this.service.loader=false;
     },(error:any)=>{
@@ -50,8 +52,8 @@ onSubmit(){
     });
     });
 }
-
 editTask(n:number){
+    this.task_edit[n]=this.service.getCopy(this.task_info[n])
     this.task_edit[n].showinput=true;
 }
 closeEditTask(n:number){
