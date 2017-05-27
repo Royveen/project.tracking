@@ -59,8 +59,8 @@
                 <td data-title="Task"> {{t["phase"]}}</td>
                 <td data-title="Task">{{t["planned_start_date"].formatted}}</td>
                 <td data-title="Task"> {{t["planned_end_date"].formatted}}</td>
-                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["actual_start"]}}</span>
-                    <input class="taskTableInput date" datepicker *ngIf="task_edit[i].showinput" name="actual_start_{{i}}" [(ngModel)]="task_edit[i].actual_start">
+                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["actual_start"].formatted}}</span>
+                    <input class="taskTableInput date" datepicker *ngIf="task_edit[i].showinput" name="actual_start_{{i}}" [(ngModel)]="task_edit[i].actual_start" value="{{task_edit[i].actual_start.formatted}}">
                 </td>
                 <td data-title="Task"> {{t["actual_end"].formatted}}</td>
                 <td data-title="Task"> {{t["BAC"]}}</td>

@@ -5,6 +5,12 @@ export interface ILogin {
     password: string
 }
 
+export interface IDate {
+    date:Object;
+    jsdate:Date;
+    formatted:string;
+    epoc:number;
+}
 export interface IResource {
     sap_id: number;
     firstName: string;
