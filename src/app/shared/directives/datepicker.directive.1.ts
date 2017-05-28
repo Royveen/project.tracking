@@ -1,36 +1,63 @@
- import { Component, ElementRef, Input, NgZone,HostListener,Output,EventEmitter,ChangeDetectorRef } from '@angular/core';
- import {IDate} from '../interfaces'
-declare var $:any
+import { Component, forwardRef, ElementRef, Input, NgZone, HostListener, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms'
+import { IDate } from '../interfaces'
+declare var $: any
+export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => DatePickerComponent),
+  multi: true
+};
 @Component({
   selector: 'datepicker',
-  template: '<div class="datepicker"><div class="input-group date " data-date-format="mm/dd/yyyy"><input type="text"  id="{{ngId}}"  class="{{inputclass}}" name="{{ngName}}"/><span class="input-group-addon" [hidden]="showicon"><span [hidden]="showicon" class="glyphicon glyphicon-calendar"></span></span></div></div>',
+  template: '<div class="{{group_class}} date"><input type="text"  id="{{ngId}}"  class="form-control {{inputclass}}"  name="{{ngName}}"/><span class="input-group-addon" [hidden]="!!showicon"><span [hidden]="showicon" class="fa fa-calendar"></span></span></div>',
+  providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
-export class DatePickerComponent {
-  @Input('class') inputclass:string
-  @Input('id') ngId:string;    
+export class DatePickerComponent implements ControlValueAccessor {
+  @Input('class') inputclass: string
+  @Input('id') ngId: string;
   @Input('ngModel') setDate: IDate;
-  @Input('name') ngName:string
-  @Input('showicon') showicon:string
-@Output() ngModelChange: EventEmitter<any> = new EventEmitter(false);
+  @Input('name') ngName: string
+  @Input('showicon') showicon: boolean
+  group_class: string = "input-group";
+  @Output() ngModelChange: EventEmitter<any> = new EventEmitter(false);
   private el: HTMLElement;
-  constructor(el: ElementRef, public zone: NgZone,public chref:ChangeDetectorRef ) {
+  constructor(el: ElementRef, public zone: NgZone) {
     this.el = el.nativeElement;
   }
 
   ngOnInit() {
-    console.log(this.setDate);
-    $(this.el).find('.date').datepicker('setDate',new Date(this.setDate.formatted)).datepicker({autoclose:true}).on('change', (e:any) => {
-        let targetDate=new Date(e.target.value);
-            this.setDate.date={year:targetDate.getFullYear(),month:targetDate.getMonth()+1,day:targetDate.getDate()};
-            this.setDate.jsdate=targetDate;
-            this.setDate.formatted=e.target.value;
-            this.setDate.epoc=targetDate.getTime();
-        this.zone.run(()=>{
-       this.ngModelChange.emit(this.setDate);})});
+    if (!!this.showicon) {
+      this.group_class = "";
+    }
+    console.log(!!this.showicon);
+    $(this.el).datepicker({ autoclose: true, format: 'mm/dd/yyyy' }).datepicker('setDate', new Date(this.setDate)).on('change', (e: any) => {
+      let targetDate = new Date(e.target.value);
+      console.log('change');
+      let sendDate: IDate = {
+        date: { year: targetDate.getFullYear(), month: targetDate.getMonth() + 1, day: targetDate.getDate() },
+        jsdate: targetDate,
+        formatted: e.target.value,
+        epoc: targetDate.getTime()
+      };
+      this.zone.run(() => {
+        this.ngModelChange.emit(sendDate);
+      })
+    });
+  }
 
-    // Or if you're not doing anything else in the onSelect callback
-    // $(this.el).datepicker({
-    //   onSelect: this.doEmitDate.bind(this)
-    // });
+  //From ControlValueAccessor interface
+  writeValue(value: any) {
+    console.log(value);
+    console.log("1:write");
+  }
+
+  //From ControlValueAccessor interface
+  registerOnChange(fn: any) {
+    console.log("1:change");
+  }
+
+  //From ControlValueAccessor interface
+  registerOnTouched(fn: any) {
+    console.log("1:touched");
   }
 }

@@ -18,7 +18,7 @@ export class DatePickerDirective implements AfterContentInit, OnInit {
 
   ngOnInit() {
     console.log("1");
-    $(this.el).datepicker({ autoclose: true, format: 'mm/dd/yyyy' }).on('change', (e: any) => {
+    $(this.el).datepicker({ autoclose: true, format: 'mm/dd/yyyy' }).datepicker('setDate', new Date(this.setDate)).on('change', (e: any) => {
       let targetDate = new Date(e.target.value);
       console.log('change');
       let sendDate: IDate = {

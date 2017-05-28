@@ -89,10 +89,12 @@
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label" for="tname">Planned Start Date</label>
                                     <div class="col-md-7">
-                                        <div class="datepicker">
-                                            <div class="input-group date "><input type="text" id="planned_start_date" name="planned_start_date" datepicker [ngModel]="task_add.planned_start_date.formatted" (ngModelChange)="task_add.planned_start_date=$event" /><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        <datepicker id="planned_start_date" name="planned_start_date" datepicker [ngModel]="task_add.planned_start_date.formatted" (ngModelChange)="task_add.planned_start_date=$event"></datepicker>
+                                        <!--<div class="datepicker">
+                                            <div class="input-group date "><input type="text" id="planned_start_date" class="form-control" name="planned_start_date" datepicker [ngModel]="task_add.planned_start_date.formatted" (ngModelChange)="task_add.planned_start_date=$event" />
+                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
 
@@ -101,8 +103,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label" for="tname">Planned End Date</label>
                                     <div class="col-md-7">
-                                        <div class="input-group date "><input type="text" id="planned_end_date" name="planned_end_date" datepicker [ngModel]="task_add.planned_end_date.formatted" (ngModelChange)="task_add.planned_end_date=$event" /><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                        </div>
+                                        <datepicker id="planned_end_date" name="planned_end_date" datepicker [ngModel]="task_add.planned_end_date.formatted" (ngModelChange)="task_add.planned_end_date=$event"></datepicker>
                                     </div>
                                 </div>
                                 <div class="form-group row">
