@@ -1,11 +1,11 @@
-import { Directive, ElementRef, OnInit, AfterViewChecked, Input, NgZone, HostListener, Output, EventEmitter } from '@angular/core';
+import { Directive, ElementRef, OnInit, AfterContentInit, Input, NgZone, HostListener, Output, EventEmitter } from '@angular/core';
 import { IDate } from '../interfaces'
 import { NgModel } from '@angular/forms'
 declare var $: any
 @Directive({
   selector: '[datepicker]'
 })
-export class DatePickerDirective implements AfterViewChecked {
+export class DatePickerDirective implements AfterContentInit, OnInit {
 
   @Input('ngModel') setDate: IDate;
 
@@ -16,17 +16,24 @@ export class DatePickerDirective implements AfterViewChecked {
     this.el = el.nativeElement;
   }
 
-  ngAfterViewChecked() {
-
-    $(this.el).datepicker({ autoclose: true, setDate: this.setDate.formatted }).datepicker('setDate', this.setDate.formatted).on('change', (e: any) => {
+  ngOnInit() {
+    console.log("1");
+    $(this.el).datepicker({ autoclose: true, format: 'mm/dd/yyyy' }).on('change', (e: any) => {
       let targetDate = new Date(e.target.value);
-      this.setDate.date = { year: targetDate.getFullYear(), month: targetDate.getMonth() + 1, day: targetDate.getDate() };
-      this.setDate.jsdate = targetDate;
-      this.setDate.formatted = e.target.value;
-      this.setDate.epoc = targetDate.getTime();
+      console.log('change');
+      let sendDate: IDate = {
+        date: { year: targetDate.getFullYear(), month: targetDate.getMonth() + 1, day: targetDate.getDate() },
+        jsdate: targetDate,
+        formatted: e.target.value,
+        epoc: targetDate.getTime()
+      };
       this.zone.run(() => {
-        this.ngModelChange.emit(this.setDate);
+        this.ngModelChange.emit(sendDate);
       })
     });
+  }
+
+  ngAfterContentInit() {
+    //$(this.el).datepicker('setDate', new Date(this.setDate.formatted))
   }
 }

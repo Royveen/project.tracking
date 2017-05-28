@@ -41,8 +41,6 @@
                 <th>Name</th>
                 <th>Planned Start Date</th>
                 <th>Planned End Date</th>
-                <th>Actual Start Date</th>
-                <th>Actual End Date</th>
                 <th>BAC</th>
                 <th>Actions</th>
             </thead>
@@ -53,8 +51,6 @@
                     <td>{{t.task_des}}</td>
                     <td>{{t.planned_start_date.formatted}}</td>
                     <td>{{t.planned_end_date.formatted}}</td>
-                    <td>{{t.actual_start.formatted}}</td>
-                    <td>{{t.actual_end.formatted}}</td>
                     <td>{{t.BAC}}</td>
                     <td>
                         <a (click)="removeTask(i)" class="btn btn-danger">Remove</a>
@@ -93,27 +89,20 @@
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label" for="tname">Planned Start Date</label>
                                     <div class="col-md-7">
-                                        <my-date-picker name="planstartdate" [options]="myDatePickerOptions" [(ngModel)]="task_add.planned_start_date" required></my-date-picker>
+                                        <div class="datepicker">
+                                            <div class="input-group date "><input type="text" id="planned_start_date" name="planned_start_date" datepicker [ngModel]="task_add.planned_start_date.formatted" (ngModelChange)="task_add.planned_start_date=$event" /><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="tname">Planned End Date</label>
-                                    <div class="col-md-7">
-                                        <my-date-picker name="planenddate" [options]="myDatePickerOptions" [(ngModel)]="task_add.planned_end_date" required></my-date-picker>
-                                    </div>
-                                </div>
+
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="tname">Actual Start Date</label>
+                                    <label class="col-md-4 col-form-label" for="tname">Planned End Date</label>
                                     <div class="col-md-7">
-                                        <my-date-picker name="actual_start" [options]="myDatePickerOptions" [(ngModel)]="task_add.actual_start" required></my-date-picker>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="tname">Actual End Date</label>
-                                    <div class="col-md-7">
-                                        <my-date-picker name="actual_end" [options]="myDatePickerOptions" [(ngModel)]="task_add.actual_end" required></my-date-picker>
+                                        <div class="input-group date "><input type="text" id="planned_end_date" name="planned_end_date" datepicker [ngModel]="task_add.planned_end_date.formatted" (ngModelChange)="task_add.planned_end_date=$event" /><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
