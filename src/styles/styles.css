@@ -249,6 +249,10 @@ footer {
     border: none;
 }
 
+.task-table {
+    font-size: 14px;
+}
+
 .task-table td:last-child {
     width: 70px;
 }
@@ -282,4 +286,8 @@ footer {
 table .form-control {
     padding-left: 2px;
     padding-right: 2px;
+}
+
+table input[type="number"] {
+    width: 40px;
 }

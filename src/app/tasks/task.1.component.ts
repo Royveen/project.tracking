@@ -24,7 +24,7 @@ export class Task1Component implements OnInit, OnDestroy {
             var one = {};
             this.service.getTasks(id)
                 .subscribe((tasks: any) => {
-                this.task_info = tasks;
+                    this.task_info = tasks;
                     this.task_edit = service.getCopy(this.task_info);
 
                     this.task_edit.map(function (n: any) {
@@ -65,8 +65,12 @@ export class Task1Component implements OnInit, OnDestroy {
         this.task_edit[n].showinput = false;
     }
 
-    doEmitDate(dateText: any) {
-        console.log(dateText);
+    valueATD = function (v: any): number {
+        return v.SPE + v.PME + v.conf_management + v.QA + v.defect_prevention + v.training;
+    }
+
+    valueSPE = function (v: any): number {
+        return v.task_planned + v.review_planned + v.rework_planned;
     }
 
     ngOnInit() {

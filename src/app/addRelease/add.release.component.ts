@@ -53,7 +53,7 @@ export class AddReleaseComponent {
       jsdate: '',
       formatted: '',
     },
-    BAC: '',
+    BAC: 0,
     release: ''
   }
   insertTask() {
