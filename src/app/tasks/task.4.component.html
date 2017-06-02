@@ -23,6 +23,12 @@
                 BAC
             </th>
             <th>
+                ATD
+            </th>
+            <th>
+                SPE
+            </th>
+            <th>
                 Defects Recieved
             </th>
             <th>
@@ -30,122 +36,42 @@
             </th>
         </thead>
         <tbody>
-            <tr *ngFor=" let t of task_info;let i=index ">
+            <tr *ngFor=" let t of factory.task_info;let i=index ">
                 <td data-title="Task">{{t["task_des"]}}</td>
                 <td data-title="Task"> {{t["phase"]}}</td>
                 <td data-title="Task"> {{t["planned_start_date"].formatted}}</td>
                 <td data-title="Task"> {{t["planned_end_date"].formatted}}</td>
-                <td data-title="Task"> {{t["actual_start"].formatted}}</td>
-                <td data-title="Task"> {{t["actual_end"].formatted}}</td>
-                <td data-title="Task"> {{t["BAC"]}}</td>
-                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["defects_received"]}}</span> <input class="taskTableInput" type="text" [(ngModel)]="task_edit[i].defects_received" *ngIf="task_edit[i].showinput" /></td>
-                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["defects_delivered"]}}</span> <input class="taskTableInput" type="text" [(ngModel)]="task_edit[i].defects_delivered" *ngIf="task_edit[i].showinput" /></td>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["actual_start_date"].formatted}}</span> <span *ngIf="factory.task_edit[i].showinput">{{factory.task_edit[i]["actual_start_date"].formatted}}</span>
+                </td>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["actual_end_date"].formatted}}</span> <span *ngIf="factory.task_edit[i].showinput">{{factory.task_edit[i]["actual_end_date"].formatted}}</span>
+                </td>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["BAC"]}}</span> <span *ngIf="factory.task_edit[i].showinput">{{factory.task_edit[i]["BAC"]}}</span>
+                </td>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["ATD"]}}</span> <span *ngIf="factory.task_edit[i].showinput">{{factory.task_edit[i]["ATD"]}}</span>
+                </td>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["SPE"]}}</span> <span *ngIf="factory.task_edit[i].showinput">{{factory.task_edit[i]["SPE"]}}</span>
+                </td>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["defects_received"]}}</span> <input class="taskTableInput form-control" type="number" [(ngModel)]="factory.task_edit[i].defects_received" *ngIf="factory.task_edit[i].showinput" /></td>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["defects_delivered"]}}</span> <input class="taskTableInput form-control" type="number" [(ngModel)]="factory.task_edit[i].defects_delivered" *ngIf="factory.task_edit[i].showinput" /></td>
                 <td data-title="Task">
-                    <ul class="list-inline" *ngIf="!task_edit[i].showinput">
+                    <ul class="list-inline" *ngIf="!factory.task_edit[i].showinput">
                         <li class=" list-inline-item ">
-                            <i class="fa fa-pencil " aria-hidden="true " (click)="editTask(i) "></i>
+                            <i class="fa fa-pencil " aria-hidden="true " (click)="factory.editTask(i) "></i>
                         </li>
                         <li class="list-inline-item ">
-                            <i class="fa fa-trash " aria-hidden="true " (click)="toggleTask(i) "></i>
+                            <i class="fa fa-trash " aria-hidden="true " (click)="factory.toggleTask(i) "></i>
                         </li>
                     </ul>
-                    <ul class="list-inline " *ngIf="task_edit[i].showinput">
+                    <ul class="list-inline " *ngIf="factory.task_edit[i].showinput">
                         <li class="list-inline-item ">
-                            <i class="fa fa-check " aria-hidden="true " (click)="onSubmit(i) "></i>
+                            <i class="fa fa-check " aria-hidden="true " (click)="factory.onSubmit(i) "></i>
                         </li>
                         <li class="list-inline-item">
-                            <i class="fa fa-times" aria-hidden="true " (click)="closeEditTask(i) "></i>
+                            <i class="fa fa-times" aria-hidden="true " (click)="factory.closeEditTask(i) "></i>
                         </li>
                     </ul>
                 </td>
             </tr>
         </tbody>
     </table>
-
-
-    <!--<div class="modal fade" id="taskEditDets" tabindex="-1" role="dialog" aria-labelledby="taskEditDets">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Task Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal clearfix" #taskForm="ngForm" id="taskForm" (ngSubmit)="onSubmit()">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="phase">Phase</label>
-                                    <div class="col-md-7">
-                                        <input id="phase" name="phase" type="text" [(ngModel)]="task_edit.phase" placeholder="Phase" class="form-control input-md">
-
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="tgroup">Task Name</label>
-                                    <div class="col-md-7">
-                                        <input id="tgroup" name="tgroup" type="text" [(ngModel)]="task_edit.task_des" placeholder="Team Group" class="form-control input-md">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="tname">Planned Start Date</label>
-                                    <div class="col-md-7">
-                                        <my-date-picker name="planstartdate" [options]="service.myDatePickerOptions" [(ngModel)]="task_edit.planned_start_date" required></my-date-picker>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="tname">Planned End Date</label>
-                                    <div class="col-md-7">
-                                        <my-date-picker name="planenddate" [options]="service.myDatePickerOptions" [(ngModel)]="task_edit.planned_end_date" required></my-date-picker>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="def-rec">Defects Received</label>
-                                    <div class="col-md-7">
-                                        <input id="def-rec" name="def-rec" type="number" step="0.01" [(ngModel)]="task_edit.defects_received" placeholder="Defects Received" class="form-control input-md">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="tname">Actual Start Date</label>
-                                    <div class="col-md-7">
-                                        <my-date-picker name="actual_start" [options]="service.myDatePickerOptions" [(ngModel)]="task_edit.actual_start" required></my-date-picker>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="tname">Actual End Date</label>
-                                    <div class="col-md-7">
-                                        <my-date-picker name="actual_end" [options]="service.myDatePickerOptions" [(ngModel)]="task_edit.actual_end" required></my-date-picker>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="bac">BAC</label>
-                                    <div class="col-md-7">
-                                        <input id="bac" name="bac" type="number" step="0.01" [(ngModel)]="task_edit.BAC" placeholder="BAC" class="form-control input-md">
-
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label" for="def-del">Defects Delivered</label>
-                                    <div class="col-md-7">
-                                        <input id="def-del" name="def-del" type="number" step="0.01" [(ngModel)]="task_edit.defects_delivered" placeholder="Defects Delivered" class="form-control input-md">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Add</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>-->
 </div>

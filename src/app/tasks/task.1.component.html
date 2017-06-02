@@ -54,47 +54,47 @@
             </th>
         </thead>
         <tbody>
-            <tr *ngFor=" let t of task_info;let i=index ">
+            <tr *ngFor=" let t of factory.task_info;let i=index ">
                 <td data-title="Task">{{t["task_des"]}}</td>
                 <td data-title="Task"> {{t["phase"]}}</td>
                 <td data-title="Task">{{t["planned_start_date"].formatted}}</td>
                 <td data-title="Task"> {{t["planned_end_date"].formatted}}</td>
-                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["actual_start_date"].formatted}}</span>
-                    <datepicker class="taskTableInput" *ngIf="task_edit[i].showinput" name="{{'actual_start_'+i}}" [ngModel]="task_edit[i].actual_start_date.formatted" (ngModelChange)="task_edit[i].actual_start_date = $event" showicon="false"></datepicker>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["actual_start_date"].formatted}}</span>
+                    <datepicker class="taskTableInput" *ngIf="factory.task_edit[i].showinput" name="{{'actual_start_'+i}}" [ngModel]="factory.task_edit[i].actual_start_date.formatted" (ngModelChange)="factory.task_edit[i].actual_start_date = $event" showicon="false"></datepicker>
                 </td>
-                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["actual_end_date"].formatted}}</span>
-                    <datepicker class="taskTableInput" *ngIf="task_edit[i].showinput" name="{{'actual_end_'+i}}" [ngModel]="task_edit[i].actual_end_date.formatted" (ngModelChange)="task_edit[i].actual_end_date = $event" showicon="false"></datepicker>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["actual_end_date"].formatted}}</span>
+                    <datepicker class="taskTableInput" *ngIf="factory.task_edit[i].showinput" name="{{'actual_end_'+i}}" [ngModel]="factory.task_edit[i].actual_end_date.formatted" (ngModelChange)="factory.task_edit[i].actual_end_date = $event" showicon="false"></datepicker>
                 </td>
-                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["BAC"]}}</span> <input class="taskTableInput form-control" type="number" [(ngModel)]="task_edit[i].BAC" *ngIf="task_edit[i].showinput" /></td>
-                <td> <span *ngIf="!task_edit[i].showinput">{{t["ATD"]}}</span> <span *ngIf="task_edit[i].showinput">{{task_edit[i]["ATD"]}}</span></td>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["BAC"]}}</span> <input class="taskTableInput form-control" type="number" [(ngModel)]="factory.task_edit[i].BAC" *ngIf="factory.task_edit[i].showinput" /></td>
+                <td> <span *ngIf="!factory.task_edit[i].showinput">{{t["ATD"]}}</span> <span *ngIf="factory.task_edit[i].showinput">{{factory.task_edit[i]["ATD"]}}</span></td>
                 <td>{{t["PV"]}}</td>
                 <td>{{t["EV"]}}</td>
                 <td>{{t["AC"]}}</td>
                 <td>{{t["ETC"]}}</td>
                 <td>{{t["EAC"]}}</td>
-                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["task_planned"]}}</span> <input class="taskTableInput form-control" (change)="task_edit[i]['SPE']=valueSPE(task_edit[i]);task_edit[i]['ATD']=valueATD(task_edit[i])" type="number" [(ngModel)]="task_edit[i].task_planned"
-                        *ngIf="task_edit[i].showinput" /></td>
-                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["review_planned"]}}</span> <input class="taskTableInput form-control" (change)="task_edit[i]['SPE']=valueSPE(task_edit[i]);task_edit[i]['ATD']=valueATD(task_edit[i])" type="number" [(ngModel)]="task_edit[i].review_planned"
-                        *ngIf="task_edit[i].showinput" /></td>
-                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["rework_planned"]}}</span> <input class="taskTableInput form-control" (change)="task_edit[i]['SPE']=valueSPE(task_edit[i]);task_edit[i]['ATD']=valueATD(task_edit[i])" type="number" [(ngModel)]="task_edit[i].rework_planned"
-                        *ngIf="task_edit[i].showinput" /></td>
-                <td data-title="Task"> <span *ngIf="!task_edit[i].showinput">{{t["SPE"]}}</span> <span *ngIf="task_edit[i].showinput">{{task_edit[i]["SPE"]}}</span>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["task_planned"]}}</span> <input class="taskTableInput form-control" (change)="factory.task_edit[i]['SPE']=factory.valueSPE(factory.task_edit[i]);factory.task_edit[i]['ATD']=factory.valueATD(factory.task_edit[i])"
+                        type="number" [(ngModel)]="factory.task_edit[i].task_planned" *ngIf="factory.task_edit[i].showinput" /></td>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["review_planned"]}}</span> <input class="taskTableInput form-control" (change)="factory.task_edit[i]['SPE']=factory.valueSPE(factory.task_edit[i]);factory.task_edit[i]['ATD']=factory.valueATD(factory.task_edit[i])"
+                        type="number" [(ngModel)]="factory.task_edit[i].review_planned" *ngIf="factory.task_edit[i].showinput" /></td>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["rework_planned"]}}</span> <input class="taskTableInput form-control" (change)="factory.task_edit[i]['SPE']=factory.valueSPE(factory.task_edit[i]);factory.task_edit[i]['ATD']=factory.valueATD(factory.task_edit[i])"
+                        type="number" [(ngModel)]="factory.task_edit[i].rework_planned" *ngIf="factory.task_edit[i].showinput" /></td>
+                <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["SPE"]}}</span> <span *ngIf="factory.task_edit[i].showinput">{{factory.task_edit[i]["SPE"]}}</span>
                 </td>
                 <td data-title="Task">
-                    <ul class="list-inline" *ngIf="!task_edit[i].showinput">
+                    <ul class="list-inline" *ngIf="!factory.task_edit[i].showinput">
                         <li class=" list-inline-item ">
-                            <i class="fa fa-pencil " aria-hidden="true " (click)="editTask(i) "></i>
+                            <i class="fa fa-pencil " aria-hidden="true " (click)="factory.editTask(i) "></i>
                         </li>
                         <li class="list-inline-item ">
-                            <i class="fa fa-trash " aria-hidden="true " (click)="toggleTask(i) "></i>
+                            <i class="fa fa-trash " aria-hidden="true " (click)="factory.deleteTask(i) "></i>
                         </li>
                     </ul>
-                    <ul class="list-inline " *ngIf="task_edit[i].showinput">
+                    <ul class="list-inline " *ngIf="factory.task_edit[i].showinput">
                         <li class="list-inline-item ">
-                            <i class="fa fa-check " aria-hidden="true " (click)="onSubmit(i) "></i>
+                            <i class="fa fa-check " aria-hidden="true " (click)="factory.onSubmit(i) "></i>
                         </li>
                         <li class="list-inline-item ">
-                            <i class="fa fa-times   " aria-hidden="true " (click)="closeEditTask(i) "></i>
+                            <i class="fa fa-times   " aria-hidden="true " (click)="factory.closeEditTask(i) "></i>
                         </li>
                     </ul>
                 </td>

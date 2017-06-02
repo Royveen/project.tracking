@@ -62,7 +62,8 @@ export interface ITasks {
     defect_prevention: number,
     training: number,
     defects_received: number,
-    defects_delivered: number
+    defects_delivered: number,
+    showinput:boolean
 }
 
 export interface IResourcePersonal {
