@@ -48,7 +48,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   //From ControlValueAccessor interface
   writeValue(value: any) {
     console.log(value);
-    console.log("1:write");
+    
   }
 
   //From ControlValueAccessor interface
@@ -58,6 +58,6 @@ export class DatePickerComponent implements ControlValueAccessor {
 
   //From ControlValueAccessor interface
   registerOnTouched(fn: any) {
-    console.log("1:touched");
+    
   }
 }

@@ -18,4 +18,7 @@ export class Task1Component  {
    constructor(private factory:TaskFactory){
   
 }
+
+
+    
 }

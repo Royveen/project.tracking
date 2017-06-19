@@ -291,3 +291,9 @@ table .form-control {
 table input[type="number"] {
     width: 40px;
 }
+
+.task-btn{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
