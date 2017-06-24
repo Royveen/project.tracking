@@ -63,9 +63,29 @@ export interface ITasks {
     training: number,
     defects_received: number,
     defects_delivered: number,
-    showinput:boolean
+    showinput: boolean
 }
 
+export interface ISum {
+    "totals_atd": number,
+    "totals_BAC": number,
+    "totals_PV": number,
+    "totals_EV": number,
+    "totals_EAC": number,
+    "totals_ETC": number,
+    "totals_AC": number,
+    "totals_task_planned": number,
+    "totals_review_planned": number,
+    "totals_rework_planned": number,
+    "totals_SPE": number,
+    "totals_PME": number,
+    "totals_conf_management": number,
+    "totals_QA": number,
+    "totals_defect_prevention": number,
+    "totals_training": number,
+    "totals_defects_received": number,
+    "totals_defects_delivered": number
+}
 export interface IResourcePersonal {
 
 }

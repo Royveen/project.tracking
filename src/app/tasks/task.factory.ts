@@ -6,12 +6,14 @@ import { Router, ActivatedRouteSnapshot,Resolve, Params,RouterStateSnapshot } fr
 import { DataService } from '../core/services/data.service'
 import { DialogService } from '../core/services/dialog.service'
 import { ITasks } from '../shared/interfaces'
+import { ISum } from '../shared/interfaces'
 declare var swal:any
 @Injectable()
 export class TaskFactory implements Resolve<ITasks[]> {
    releaseID:string;
    task_info:Array<ITasks>
    task_edit:Array<ITasks>
+   sums:ISum;
     constructor(private service:DataService,private router: Router,private dialog:DialogService){
 
     }

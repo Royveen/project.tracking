@@ -144,6 +144,18 @@ getCopy(objectToCopy:any) {
                    .catch(this.handleError);
     }
 
+     getSums(release:String) : Observable<boolean> {
+        return this.http.get("api/sum/"+release)
+                   .map((res: Response) => {
+                    try{
+                        return res.json();
+                    }catch(error){
+                        return res["_body"];
+                    }   
+                   })
+                   .catch(this.handleError);
+    }
+
      addTasks(task:any) : Observable<boolean> {
         return this.http.post(this.resourcesBaseUrl + '/tasks' , task)
                    .map((res: Response) => {

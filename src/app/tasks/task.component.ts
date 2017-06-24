@@ -1,33 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { Router,ActivatedRoute ,NavigationEnd,Params } from '@angular/router';
-import {Location} from '@angular/common'
-import {DataService} from '../core/services/data.service'
-import {TaskFactory} from './task.factory'
+import { Router, ActivatedRoute, NavigationEnd, Params } from '@angular/router';
+import { Location } from '@angular/common'
+import { DataService } from '../core/services/data.service'
+import { TaskFactory } from './task.factory'
 import 'rxjs/add/operator/filter';
 import { ITasks } from '../shared/interfaces'
-@Component({ 
+@Component({
   moduleId: module.id,
   selector: 'task-info',
   templateUrl: 'task.component.html'
 })
 export class TaskComponent implements OnInit {
-    previousUrl=this.service.prevUrl;
-    title='';
+  previousUrl = this.service.prevUrl;
+  title = '';
 
-    constructor(private route: ActivatedRoute, private service:DataService,public task_factory:TaskFactory,private location:Location) {
-        
-        this.service.getRelease(this.task_factory.releaseID).subscribe((res:any)=>{
-          this.title=res.relName;
-               this.task_factory.task_info=this.route.snapshot.data['tasks'];
-     this.task_factory.task_edit=this.service.getCopy(this.task_factory.task_info);
-     this.service.loader=false;
-        })
+  constructor(private route: ActivatedRoute, private service: DataService, public task_factory: TaskFactory, private location: Location) {
+    this.task_factory.task_info = this.route.snapshot.data['tasks'];
+    this.task_factory.sums = this.route.snapshot.data['sums'][0];
+    this.task_factory.task_edit = this.service.getCopy(this.task_factory.task_info);
+    this.service.getRelease(this.task_factory.releaseID).subscribe((res: any) => {
+      this.title = res.relName;
 
-     
-       
-     }
+      this.service.loader = false;
+    })
 
-    task_add:ITasks = {
+
+
+  }
+
+  task_add: ITasks = {
     phase: '',
     task_des: '',
     planned_start_date: {
@@ -55,7 +56,7 @@ export class TaskComponent implements OnInit {
       formatted: '',
     },
     BAC: 0,
-    release:this.task_factory.releaseID,
+    release: this.task_factory.releaseID,
     ATD: 0,
     PV: 0,
     EV: 0,
@@ -73,7 +74,7 @@ export class TaskComponent implements OnInit {
     training: 0,
     defects_received: 0,
     defects_delivered: 0,
-    showinput:true
+    showinput: true
   }
   insertTask() {
     console.log(this.task_add.release);
@@ -81,10 +82,10 @@ export class TaskComponent implements OnInit {
     this.task_factory.task_info.push(copy);
     this.task_factory.task_edit.push(copy);
   }
-    ngOnInit() {
+  ngOnInit() {
 
-     
-    }
+
+  }
 
 }
 

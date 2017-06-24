@@ -7,6 +7,7 @@ import { Task4Component } from './task.4.component'
 import { TaskSummaryComponent } from './task.summary.component'
 import { CanDeactivateFormGuard } from './can-deactivate.guard'
 import {TaskFactory} from './task.factory'
+import {TaskSumResolver} from './tasks.sums.resolve'
 export var taskRoutes: Routes = [
   {
     path: 'tasks/:id', component: TaskComponent, children: [
@@ -15,7 +16,7 @@ export var taskRoutes: Routes = [
       { path: '2', component: Task3Component },
       { path: '3', component: Task4Component },
     ],
-    resolve:{tasks:TaskFactory}
+    resolve:{tasks:TaskFactory,sums:TaskSumResolver}
   }
 ];
 

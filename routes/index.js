@@ -95,7 +95,23 @@ router.get('/api/sum/:id', (req, res) => {
                 "$group": {
                     "_id": '',
                     "totals_atd": { "$sum": '$ATD' },
-                    "totals_BAC": { "$sum": '$BAC' }
+                    "totals_BAC": { "$sum": '$BAC' },
+                    "totals_PV": { "$sum": '$PV' },
+                    "totals_EV": { "$sum": '$EV' },
+                    "totals_EAC": { "$sum": '$EAC' },
+                    "totals_ETC": { "$sum": '$ETC' },
+                    "totals_AC": { "$sum": '$AC' },
+                    "totals_task_planned": { "$sum": '$task_planned' },
+                    "totals_review_planned": { "$sum": '$review_planned' },
+                    "totals_rework_planned": { "$sum": '$rework_planned' },
+                    "totals_SPE": { "$sum": '$SPE' },
+                    "totals_PME": { "$sum": '$PME' },
+                    "totals_conf_management": { "$sum": '$conf_management' },
+                    "totals_QA": { "$sum": '$QA' },
+                    "totals_defect_prevention": { "$sum": '$defect_prevention' },
+                    "totals_training": { "$sum": '$training' },
+                    "totals_defects_received": { "$sum": '$defects_received' },
+                    "totals_defects_delivered": { "$sum": '$defects_delivered' }
                 }
             }
         ],
