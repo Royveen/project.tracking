@@ -166,10 +166,11 @@ router.post('/api/resources/tasks', (req, res) => {
         if (err) {
             res.status(500).send("Internal Server Error");
         } else {
-            res.status(200).send("Save Successfully");
+            res.status(200).send(docs);
         }
     })
 });
+
 
 router.put('/api/resources/:id', function(req, res) {
 
@@ -199,6 +200,21 @@ router.put('/api/tasks/:id', function(req, res) {
         console.log(err);
         console.log(docs);
         res.status(200).send("Save Successfully");
+    })
+
+});
+
+
+router.delete('/api/tasks/:id', function(req, res) {
+
+    var db = req.db;
+    var id = req.params.id;
+    var taskModel = getModel(db, 'delTask', schemas.tasks, 'taskCollection');
+
+    taskModel.remove({ "_id": id }).exec((err, docs) => {
+        console.log(err);
+        console.log(docs);
+        res.status(200).send("Deleted Successfully");
     })
 
 });

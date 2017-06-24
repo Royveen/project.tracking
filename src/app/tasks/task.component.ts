@@ -73,7 +73,7 @@ export class TaskComponent implements OnInit {
     training: 0,
     defects_received: 0,
     defects_delivered: 0,
-    showinput:false
+    showinput:true
   }
   insertTask() {
     console.log(this.task_add.release);

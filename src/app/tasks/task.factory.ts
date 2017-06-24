@@ -57,9 +57,10 @@ export class TaskFactory implements Resolve<ITasks[]> {
             });
             }else {
                 this.service.addTasks(this.task_edit[n]).subscribe((res: any) => {
+                this.task_edit[n]["_id"]=res[0]._id;
                 this.task_info[n] = this.service.getCopy(this.task_edit[n])
                 this.task_edit[n].showinput = false;
-                this.dialog.success(res);
+                this.dialog.success('Save Successfully');
                 this.service.loader = false;
             }, (error: any) => {
 
@@ -67,8 +68,22 @@ export class TaskFactory implements Resolve<ITasks[]> {
             }
         });
     }
+    
+    delTask(n:number) {
+        this.dialog.confirm('Are you sure',()=>{
+        if(this.task_edit[n]["_id"]){
+            this.service.delTask(this.task_edit[n]["_id"]).subscribe((res)=>{
+                this.task_edit.splice(n,1);
+            this.task_info.splice(n,1);
+            },(error)=>{
 
-
+            })
+        }else{
+            this.task_edit.splice(n,1);
+            this.task_info.splice(n,1);
+        }
+        });
+    }
     editTask(n: number) {
         this.task_edit[n] = this.service.getCopy(this.task_info[n])
         this.task_edit[n].showinput = true;

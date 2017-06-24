@@ -169,6 +169,19 @@ getCopy(objectToCopy:any) {
                    .catch(this.handleError);  
     }
 
+       delTask(id:String) : Observable<string> {
+        return this.http.delete('api/tasks/' + id)
+                   .map((res: Response) => {
+                       console.log(res);
+                    try{
+                        return res.json();
+                    }catch(error){
+                        return res["_body"];
+                    }   
+                   })
+                   .catch(this.handleError);  
+    }
+
     updateResource(id:string,changes:Object) : Observable<string> {
         return this.http.put(this.resourcesBaseUrl + '/' + id, changes)
                    .map((res: Response) => {
