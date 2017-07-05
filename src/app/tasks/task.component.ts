@@ -15,17 +15,14 @@ export class TaskComponent implements OnInit {
   title = '';
 
   constructor(private route: ActivatedRoute, private service: DataService, public task_factory: TaskFactory, private location: Location) {
+    console.log(this.route.snapshot.data['sums'][0]);
     this.task_factory.task_info = this.route.snapshot.data['tasks'];
     this.task_factory.sums = this.route.snapshot.data['sums'][0];
     this.task_factory.task_edit = this.service.getCopy(this.task_factory.task_info);
     this.service.getRelease(this.task_factory.releaseID).subscribe((res: any) => {
       this.title = res.relName;
-
       this.service.loader = false;
     })
-
-
-
   }
 
   task_add: ITasks = {

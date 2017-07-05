@@ -54,6 +54,25 @@
             </th>
         </thead>
         <tbody>
+            <tr class="task-sums">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{factory.sums.totals_BAC}}</td>
+                <td>{{factory.sums.totals_atd}}</td>
+                <td>{{factory.sums.totals_PV}}</td>
+                <td>{{factory.sums.totals_EV}}</td>
+                <td>{{factory.sums.totals_AC}}</td>
+                <td>{{factory.sums.totals_ETC}}</td>
+                <td>{{factory.sums.totals_EAC}}</td>
+                <td>{{factory.sums.totals_task_planned}}</td>
+                <td>{{factory.sums.totals_review_planned}}</td>
+                <td>{{factory.sums.totals_rework_planned}}</td>
+                <td>{{factory.sums.totals_SPE}}</td>
+            </tr>
             <tr *ngFor=" let t of factory.task_info;let i=index ">
                 <td data-title="Task">{{t["task_des"]}}</td>
                 <td data-title="Task"> {{t["phase"]}}</td>

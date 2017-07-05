@@ -20,22 +20,22 @@
                 Actual End
             </th>
             <th>
-                BAC
+                BAC (hrs)
             </th>
             <th>
-                ATD
+                ATD (hrs)
             </th>
             <th>
-                SPE
+                SPE (hrs)
             </th>
             <th>
-                PME
+                PME (hrs)
             </th>
             <th>
-                Conf Mgmt
+                Conf Mgmt (hrs)
             </th>
             <th>
-                QA
+                QA (hrs)
             </th>
             <th>
                 Defect Prevention
@@ -45,6 +45,22 @@
             </th>
         </thead>
         <tbody>
+            <tr class="total-sums">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{factory.sums.totals_BAC}}</td>
+                <td>{{factory.sums.totals_atd}}</td>
+                <td>{{factory.sums.totals_SPE}}</td>
+                <td>{{factory.sums.totals_PME}}</td>
+                <td>{{factory.sums.totals_conf_management}}</td>
+                <td>{{factory.sums.totals_QA}}</td>
+                <td>{{factory.sums.totals_defect_prevention}}</td>
+                <td>{{factory.sums.totals_training}}</td>
+            </tr>
             <tr *ngFor=" let t of factory.task_info;let i=index ">
                 <td data-title="Task">{{t["task_des"]}}</td>
                 <td data-title="Task"> {{t["phase"]}}</td>
@@ -60,15 +76,20 @@
                 </td>
                 <td data-title="Task"> <span *ngIf="!factory.task_edit[i].showinput">{{t["SPE"]}}</span> <span *ngIf="factory.task_edit[i].showinput">{{factory.task_edit[i]["SPE"]}}</span>
                 </td>
-                <td data-title="Task "> <span *ngIf="!factory.task_edit[i].showinput ">{{t["PME"]}}</span> <input class="taskTableInput form-control " type="number" [(ngModel)]="factory.task_edit[i].PME " *ngIf="factory.task_edit[i].showinput " (change)="factory.task_edit[i]['ATD']=factory.valueATD(factory.task_edit[i])"
+                <td data-title="Task "> <span *ngIf="!factory.task_edit[i].showinput ">{{t["PME"]}}</span> <input class="taskTableInput form-control "
+                        type="number" [(ngModel)]="factory.task_edit[i].PME " *ngIf="factory.task_edit[i].showinput " (change)="factory.task_edit[i]['ATD']=factory.valueATD(factory.task_edit[i])"
                     /></td>
-                <td data-title="Task "> <span *ngIf="!factory.task_edit[i].showinput ">{{t["conf_management"]}}</span> <input class="taskTableInput form-control " type="number" [(ngModel)]="factory.task_edit[i].conf_management " *ngIf="factory.task_edit[i].showinput " (change)="factory.task_edit[i]['ATD']=factory.valueATD(factory.task_edit[i])"
+                <td data-title="Task "> <span *ngIf="!factory.task_edit[i].showinput ">{{t["conf_management"]}}</span> <input class="taskTableInput form-control "
+                        type="number" [(ngModel)]="factory.task_edit[i].conf_management " *ngIf="factory.task_edit[i].showinput "
+                        (change)="factory.task_edit[i]['ATD']=factory.valueATD(factory.task_edit[i])" /></td>
+                <td data-title="Task "> <span *ngIf="!factory.task_edit[i].showinput ">{{t["QA"]}}</span> <input class="taskTableInput form-control "
+                        type="number" [(ngModel)]="factory.task_edit[i].QA " *ngIf="factory.task_edit[i].showinput " (change)="factory.task_edit[i]['ATD']=factory.valueATD(factory.task_edit[i])"
                     /></td>
-                <td data-title="Task "> <span *ngIf="!factory.task_edit[i].showinput ">{{t["QA"]}}</span> <input class="taskTableInput form-control " type="number" [(ngModel)]="factory.task_edit[i].QA " *ngIf="factory.task_edit[i].showinput " (change)="factory.task_edit[i]['ATD']=factory.valueATD(factory.task_edit[i])"
-                    /></td>
-                <td data-title="Task "> <span *ngIf="!factory.task_edit[i].showinput">{{t["defect_prevention"]}}</span> <input class="taskTableInput form-control " type="number" [(ngModel)]="factory.task_edit[i].defect_prevention " *ngIf="factory.task_edit[i].showinput " (change)="factory.task_edit[i]['ATD']=factory.valueATD(factory.task_edit[i])"
-                    /></td>
-                <td data-title="Task "> <span *ngIf="!factory.task_edit[i].showinput ">{{t["training"]}}</span> <input class="taskTableInput form-control " type="number" [(ngModel)]="factory.task_edit[i].training " *ngIf="factory.task_edit[i].showinput " (change)="factory.task_edit[i]['ATD']=factory.valueATD(factory.task_edit[i])"
+                <td data-title="Task "> <span *ngIf="!factory.task_edit[i].showinput">{{t["defect_prevention"]}}</span> <input class="taskTableInput form-control "
+                        type="number" [(ngModel)]="factory.task_edit[i].defect_prevention " *ngIf="factory.task_edit[i].showinput "
+                        (change)="factory.task_edit[i]['ATD']=factory.valueATD(factory.task_edit[i])" /></td>
+                <td data-title="Task "> <span *ngIf="!factory.task_edit[i].showinput ">{{t["training"]}}</span> <input class="taskTableInput form-control "
+                        type="number" [(ngModel)]="factory.task_edit[i].training " *ngIf="factory.task_edit[i].showinput " (change)="factory.task_edit[i]['ATD']=factory.valueATD(factory.task_edit[i])"
                     /></td>
                 <td data-title="Task ">
                     <ul class="list-inline " *ngIf="!factory.task_edit[i].showinput ">

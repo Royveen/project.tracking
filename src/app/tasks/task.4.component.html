@@ -20,22 +20,35 @@
                 Actual End
             </th>
             <th>
-                BAC
+                BAC (hrs)
             </th>
             <th>
-                ATD
+                ATD (hrs)
             </th>
             <th>
-                SPE
+                SPE (hrs)
             </th>
             <th>
-                Defects Recieved
+                Defects Recieved (hrs)
             </th>
             <th>
-                Defects Delivered
+                Defects Delivered (hrs)
             </th>
         </thead>
         <tbody>
+                        <tr class="total-sums">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{factory.sums.totals_BAC}}</td>
+                <td>{{factory.sums.totals_atd}}</td>
+                <td>{{factory.sums.totals_SPE}}</td>
+                <td>{{factory.sums.totals_defects_received}}</td>
+                <td>{{factory.sums.totals_defects_delivered}}</td>
+            </tr>
             <tr *ngFor=" let t of factory.task_info;let i=index ">
                 <td data-title="Task">{{t["task_des"]}}</td>
                 <td data-title="Task"> {{t["phase"]}}</td>
